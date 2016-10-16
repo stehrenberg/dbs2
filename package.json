@@ -1,0 +1,23 @@
+{
+  "name": "dbs2",
+  "version": "1.0.0",
+  "description": "small webapp project for dbs 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stehrenberg/dbs2.git"
+  },
+  "author": "Stephanie Ehrenberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stehrenberg/dbs2/issues"
+  },
+  "homepage": "https://github.com/stehrenberg/dbs2#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "handlebars": "^4.0.5"
+  }
+}
