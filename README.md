@@ -8,7 +8,9 @@ Empfohlende IDE: PHPStorm. Zur Konfigurierung des XAMPP-Server und Deploy in der
 NodeJS 6.7.0 (mit npm 3.10.3) hier runterladen: https://nodejs.org/download/release/v6.7.0/  
 npm 3.10.8 wirft aktuell Fehler (zumindest unter MacOS), daher die ältere Version von NodeJS mit inkludiertem npm nutzen - siehe https://github.com/npm/npm/issues/13946
 
-```$ npm install  # installiert dependencies fürs Projekt)```
+    $ npm install  # installiert dependencies fürs Projekt)
+    $ npm run gulp  # build script, das 3rd party css + js files ins Projekt kopiert
+
 
 ###Trouble Shooting
 
