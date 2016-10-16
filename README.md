@@ -10,8 +10,8 @@ npm 3.10.8 wirft aktuell Fehler (zumindest unter MacOS), daher die ältere Versi
 
 ###Trouble Shooting
 
-==> falls bei dem Schritt Fehler auftreten, kann das an den Zugriffsrechten für den Node-Ordners liegen - 
-dann müssen die auf den aktuellen Nutzer geändert werden:
+Falls beim Installieren der Dependencies mit npm Fehler auftreten:
+1) Sicherstellen, dass vorher erwähnte Versionen von NodeJS und npm vorhanden sind (mit ```node --version``` bzw. ```npm --version``` überprüfen), kann das an den Zugriffsrechten für den Node-Ordners liegen - dann müssen die auf den aktuellen Nutzer geändert werden:
 
     $ npm config get prefix
     $sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share} # falls voriges Kommando "/usr/local" liefert
