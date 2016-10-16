@@ -8,20 +8,39 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
+    <script type="text/javascript" src="assets/js/vendor/handlebars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/formHandler.js"></script>
     <title>Vote Your Favorite Soccer Club!</title>
 </head>
 <body>
 
-<h1>Welches ist dein Lieblings-Fußballclub?</h1>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Abstimmung</a></li>
+        <li><a href="#result">Ergebnis</a></li>
+    </ul>
+</div>
 
-<form>
-    <select name="clubs" required>
-    </select>
-    <button type="submit">Jetzt abstimmen!</button>
-</form>
+<h1>Welches ist dein Lieblings-Fußballclub?</h1>
+<div class="container" role="main">
+    <form>
+        <select name="clubs" required>
+            <script id="select_clubs-template" type="text/x-handlebars-template">
+                {{#each club}}
+                    <option value="{{club.name}}">{{club.name}}</option>
+            </script>
+        </select>
+        <button type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
+    </form>
+
+</div>
+
 
 </body>
+
 </html>

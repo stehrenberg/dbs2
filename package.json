@@ -18,6 +18,9 @@
   "homepage": "https://github.com/stehrenberg/dbs2#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "handlebars": "^4.0.5"
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "handlebars": "^4.0.5",
+    "jQuery": "^1.7.4"
   }
 }
