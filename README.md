@@ -1,7 +1,7 @@
-# dbs2
+#dbs2
 *Repo für das Praktikum zum Vertiefungsfach "Datenbankensysteme II" im Wintersemester 2016-17*
 
-## Projekt Setup
+##Projekt Setup
 
 ```$ npm install  # installiert bootstrap, handlebars, grunt etc)```
 
@@ -11,7 +11,7 @@ dann muss die auf den aktuellen Nutzer geändert werden:
     $ npm config get prefix
     $sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share} # falls voriges Kommando "/usr/local" liefert
     
-{ zu den Berechtigungen für den Node-Ordner siehe auch (hier)[http://bit.ly/2e7gS74]
+{ zu den Berechtigungen für den Node-Ordner siehe auch: http://bit.ly/2e7gS74
 
 ```$ cd node_modules/bootstrap && npm install```
 
