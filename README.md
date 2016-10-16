@@ -3,6 +3,8 @@
 
 ##Projekt Setup
 
+Empfohlende IDE: PHPStorm. Zur Konfigurierung des XAMPP-Server und Deploy in der IDE ist der Link hier supernützlich: http://bit.ly/2esUOoI  
+
 NodeJS 6.7.0 (mit npm 3.10.3) hier runterladen: https://nodejs.org/download/release/v6.7.0/  
 npm 3.10.8 wirft aktuell Fehler (zumindest unter MacOS), daher die ältere Version von NodeJS mit inkludiertem npm nutzen - siehe https://github.com/npm/npm/issues/13946
 
