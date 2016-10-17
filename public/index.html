@@ -28,16 +28,19 @@
 
 <h1>Welches ist dein Lieblings-Fußballclub?</h1>
 <div class="container" role="main">
-    <form action="listclubs.php" method="GET">
-        <select name="clubs" id="clubs" required>
-            <script id="select_clubs-template" type="text/x-handlebars-template">
-                {{#each clubs}}
-                    <option value="{{club_id}}">{{name}}</option>
-                {{/each}}
-            </script>
-        </select>
-        <button type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
-    </form>
+    <div class="input-group">
+        <form action="vote.php" method="POST">
+            <input name= "email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
+            <select name="clubs" id="clubs" required>
+                <script id="select_clubs-template" type="text/x-handlebars-template">
+                    {{#each clubs}}
+                        <option value="{{club_id}}">{{name}}</option>
+                    {{/each}}
+                </script>
+            </select>
+            <button type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
+        </form>
+    </div>
 </div>
 
 
