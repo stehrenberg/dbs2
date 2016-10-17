@@ -22,4 +22,6 @@ if (count($stmt->fetchAll()) == 0) {
     printf("User %s does not exist!", $userEmail);
 }
 
+echo "bla";
+
 //$queryResult = $dbConn->query("INSERT INTO votes VALUES($votedClubId, $user)");
