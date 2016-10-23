@@ -17,10 +17,11 @@ $dbConn = $dbConnector->getConnection();
 
 if(!doesUserExist($userEmail, $dbConn)) {
     $userId = createUser($userName, $userEmail, $dbConn);
-
+    var_dump($userId);
+    
     if(!hasUserVotedYet($userId, $dbConn)) {
-        printf("user %s with ID %i has not voted yet. Creating entry...", $userEmail, $userId);
-        //countVote($userId, $votedClubId, $dbConn);
+        printf("user %s with ID %s has not voted yet. Creating entry...", $userEmail, $userId);
+        countVote($userId, $votedClubId, $dbConn);
     }
 }
 
@@ -41,7 +42,7 @@ function createUser($name, $email, $dbConn) {
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $userId = findUserByEmail($email, $dbConn)[0]['user_id'];
-    var_dump($userId);
+
     return $userId;
 }
 
@@ -49,5 +50,17 @@ function hasUserVotedYet($userId, $dbConn) {
     $stmt = $dbConn->prepare('SELECT * FROM Votes WHERE Votes.user_id = :userId');
     $stmt->bindParam(':userId', $userId);
     $stmt->execute();
+
     return count($stmt->fetchAll()) > 0;
+}
+
+function countVote($userId, $votedClubId, $dbConn) {
+    printf("Inserting values userID: %s, clubID: %s", $userId, $votedClubId);
+    $stmt = $dbConn->prepare('INSERT INTO votes VALUES(:clubId, :userId, NULL)');
+    $stmt->bindParam(':clubId', $votedClubId);
+    $stmt->bindParam(':userId', $userId);
+    $stmt->execute();
+    $queryResult = $dbConn->query("SELECT * FROM votes")->fetchAll(PDO::FETCH_ASSOC);
+
+    return true;
 }

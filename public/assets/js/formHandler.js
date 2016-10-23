@@ -20,7 +20,6 @@ $(window).load(function () {
         url: 'listclubs.php',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             context.clubs = data;
             compileTemplate(context);
         },
