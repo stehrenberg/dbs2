@@ -17,6 +17,7 @@
     <script type="text/javascript" src="assets/js/app.js"></script>
     <script type="text/javascript" src="assets/js/navHandler.js"></script>
     <script type="text/javascript" src="assets/js/voteHandler.js"></script>
+    <script type="text/javascript" src="assets/js/resultsHandler.js"></script>
     <title>Vote Your Favorite Soccer Club!</title>
 </head>
 <body>
@@ -28,8 +29,31 @@
     </ul>
 </div>
 
-
-
+<div class="panel panel-default">
+    <div class="panel-heading">Ergebnisse Stimmabgaben</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Clubname</th>
+            <th>Anzahl Stimmen total</th>
+            <th>Anzahl Stimmen prozentual</th>
+        </tr>
+        </thead>
+        <tbody id="vote_results">
+        <script id="vote_results-template" type="text/x-handlebars-template">
+            {{#each voteResults}}
+            <tr>
+                <td>here be dragons</td>
+                <td>{{name}}</td>
+                <td>{{voteCount}}</td>
+                </td>here be more dragons</td>
+            </tr>
+            {{/each}}
+        </script>
+        </tbody>
+    </table>
+</div>
 
 
 </body>
