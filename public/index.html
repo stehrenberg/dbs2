@@ -5,31 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
     <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
     <link href="assets/css/vendor/bootstrap-theme.css" rel="stylesheet">
 
+    <link href="assets/css/app.css" rel="stylesheet">
+
     <script type="text/javascript" src="assets/js/vendor/handlebars.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
     <script type="text/javascript" src="assets/js/formHandler.js"></script>
+    <script type="text/javascript" src="assets/js/navHandler.js"></script>
     <title>Vote Your Favorite Soccer Club!</title>
 </head>
 <body>
 
-<div class="navbar-collapse collapse">
+<div class="navbar-collapse collapse" role="navigation">
     <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Abstimmung</a></li>
-        <li><a href="#result">Ergebnis</a></li>
+        <li id="vote_tab" class="active"><a href="#">Abstimmung</a></li>
+        <li id="results_tab"><a href="results.html">Ergebnis</a></li>
     </ul>
 </div>
 
 <h1>Welches ist dein Lieblings-Fußballclub?</h1>
 <div class="container" role="main">
     <div class="input-group">
-        <form action="vote.php" method="POST">
+        <form id="vote_form" action="" method="POST">
             <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
             <input name= "email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
             <select name="clubs" id="clubs" required>
@@ -39,11 +41,13 @@
                     {{/each}}
                 </script>
             </select>
-            <button type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
+            <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
         </form>
     </div>
 </div>
 
+<div id="voting-success-alert" class="alert alert-success" role="alert">Yay! Erfolgreich abgestimmt :) </div>
+<div id="voting-fail-alert" class="alert alert-danger" role="alert">Ups - da ist was schiefgelaufen ^_^°</div>
 
 </body>
 

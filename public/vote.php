@@ -20,8 +20,8 @@ if(!doesUserExist($userEmail, $dbConn)) {
     var_dump($userId);
     
     if(!hasUserVotedYet($userId, $dbConn)) {
-        printf("user %s with ID %s has not voted yet. Creating entry...", $userEmail, $userId);
         countVote($userId, $votedClubId, $dbConn);
+        setcookie("hasVoted", "true", time() + 3600);
     }
 }
 
