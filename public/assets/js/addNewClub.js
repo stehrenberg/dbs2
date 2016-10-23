@@ -19,5 +19,7 @@ $(function() {
         }
     });
 
-    $()
+    $('.fa').click(function(event) {
+        addClubOverlay.hide();
+    })
 });
