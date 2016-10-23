@@ -22,25 +22,25 @@
     <script type="text/javascript" src="assets/js/alertBoxHandler.js"></script>
     <script type="text/javascript" src="assets/js/addNewClub.js"></script>
 
-    <title>Vote Your Favorite Soccer Club!</title>
+    <title>Subscribe to our Newsletter</title>
 </head>
 <body>
 
 <div class="navbar-collapse collapse" role="navigation">
     <ul class="nav navbar-nav">
-        <li id="vote_tab" class="active" role="presentation"><a href="#">Abstimmung</a></li>
+        <li id="vote_tab" role="presentation"><a href="index.html">Abstimmung</a></li>
         <li id="results_tab" role="presentation"><a href="results.html">Ergebnis</a></li>
-        <li id="newsletter-subscription_tab" role="presentation"><a href="subscription.html">Newsletter</a></li>
+        <li id="newsletter-subscription_tab" class="active" role="presentation"><a href="#">Newsletter</a></li>
     </ul>
 </div>
 
-<h1>Welches ist dein Lieblings-Fußballclub?</h1>
+<h1>Melde dich hier für unseren Newsletter an</h1>
 <div class="container" role="main">
     <div class="input-group">
         <form id="vote_form" action="" method="POST">
             <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
             <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
-            <select name="clubs" id="clubs" required>
+            <select name="clubs" id="clubs" multiple="multiple">
                 <script id="select_clubs-template" type="text/x-handlebars-template">
                     {{#each clubs}}
                     <option value="{{club_id}}">{{name}}</option>
@@ -49,36 +49,12 @@
                     <option id="add_club-option" value="add_club">Einen neuen Club hinzufügen...</option>
                 </script>
             </select>
-            <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Abstimmen!</button>
+            <span class="input-group-addon">
+                <label for="is-club-member__checkbox">Mitglied in einem Fußballclub?</label>
+                <input type="checkbox" name="is-club-member" id="is-club-member__checkbox" aria-label="...">
+             </span>
+            <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
         </form>
-    </div>
-</div>
-
-<div id="voting-success-alert" class="alert alert-success" role="alert">
-    <script id="voting-success-alert-template" type="text/x-handlebars-template">
-        <p>
-            Yay! Voting erfolgreich :)<br/>
-            Außer dir haben noch {{voteCount}} andere abgestimmt. <a href="results.html">Hier gehts zum Ergebnis!</a>
-        </p>
-    </script>
-</div>
-<div id="voting-fail-alert" class="alert alert-danger" role="alert">
-    <p>Ups - da ist was schiefgelaufen ^_^°</p>
-</div>
-<div id="voting-info-alert" class="alert alert-info" role="alert">
-        <p>Dein Fußballclub wurde erfolgreich hinzugefügt.</p>
-</div>
-
-
-<div class="overlay--add-club">
-    <div class="overlay--add-club__form" style="display: block;">
-        <div class="overlay--add-club__form--inner__close"><span class="fa fa-close">x</span></div>
-        <div class="overlay--add-club__form--inner">
-            <form id="add-club_form" action="" method="POST">
-                <input name="new-club" id="add-club_input" class="center-block" type="text" placeholder=""
-                       autocomplete="off">
-            </form>
-        </div>
     </div>
 </div>
 
