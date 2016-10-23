@@ -17,6 +17,7 @@
     <script type="text/javascript" src="assets/js/app.js"></script>
     <script type="text/javascript" src="assets/js/formHandler.js"></script>
     <script type="text/javascript" src="assets/js/navHandler.js"></script>
+    <script type="text/javascript" src="assets/js/alertBoxHandler.js"></script>
     <title>Vote Your Favorite Soccer Club!</title>
 </head>
 <body>
@@ -46,8 +47,15 @@
     </div>
 </div>
 
-<div id="voting-success-alert" class="alert alert-success" role="alert">Yay! Erfolgreich abgestimmt :) </div>
-<div id="voting-fail-alert" class="alert alert-danger" role="alert">Ups - da ist was schiefgelaufen ^_^°</div>
+<div id="voting-success-alert" class="alert alert-success" role="alert">
+    <script id="voting-success-alert-template" type="text/x-handlebars-template">
+        <p>
+            Yay! Voting erfolgreich :)<br/>
+            Außer dir haben noch {{voteCount}} andere abgestimmt. <a href="results.html">Hier gehts zum Ergebnis!</a>
+        </p>
+    </script>
+</div>
+<div id="voting-fail-alert" class="alert alert-danger" role="alert"><p>Ups - da ist was schiefgelaufen ^_^°</p></div>
 
 </body>
 

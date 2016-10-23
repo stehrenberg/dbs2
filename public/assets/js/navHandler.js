@@ -4,10 +4,6 @@
 $(function () {
 
     var cookieString = getCookie("hasVoted");
-    console.log("document.cookie: " + document.cookie);
-    console.log("cookie String: " + cookieString);
-    console.log("length: " + cookieString.length);
-
 
     if(cookieString.length > 0) {
         $('#results_tab').show();

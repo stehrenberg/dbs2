@@ -40,9 +40,6 @@ $(function () {
 
     form.submit(function(event) {
         event.preventDefault();
-        var userMail = form.email;
-        console.log(userMail);
-
         $.ajax({
             method: 'POST',
             url: 'vote.php',
