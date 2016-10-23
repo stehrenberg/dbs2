@@ -8,11 +8,9 @@
 
 require_once __DIR__ . '/../backend/DatabaseConnector.php';
 
-$queryString = 'SELECT clubs.name, COUNT(user_id) AS voteCount FROM Votes, Clubs WHERE votes.club_id = Clubs.club_id GROUP BY votes.club_id ORDER BY voteCount DESC';
-
 $dbConnector = new DatabaseConnector();
 $dbConn = $dbConnector->getConnection();
-$queryResult = $dbConn->query($queryString)->fetchAll(PDO::FETCH_ASSOC);
-$json = json_encode($queryResult);
+$queryResult = $dbConn->query("SELECT COUNT('user_id') FROM votes")->fetch(PDO::FETCH_NUM);
+$json = json_encode($queryResult[0]);
 header("Content-Type: application/json");
 echo $json;
