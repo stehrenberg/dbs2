@@ -13,19 +13,22 @@ $(function () {
     };
 
     compileTemplate(context);
+    getClubList();
 
-    $.ajax({
-        method: 'GET',
-        url: 'listclubs.php',
-        dataType: 'json',
-        success: function (data) {
-            context.clubs = data;
-            compileTemplate(context);
-        },
-        error: function (jqXHR, textStatus, error) {
-            console.log(error);
-        }
-    });
+    function getClubList() {
+        $.ajax({
+            method: 'GET',
+            url: 'listclubs.php',
+            dataType: 'json',
+            success: function (data) {
+                context.clubs = data;
+                compileTemplate(context);
+            },
+            error: function (jqXHR, textStatus, error) {
+                console.log(error);
+            }
+        });
+    }
 
     function compileTemplate(context) {
         // Pass our data to the template
@@ -38,6 +41,7 @@ $(function () {
 
     var form = $('#vote_form');
 
+    // Send vote to backend and show feedback
     form.submit(function(event) {
         event.preventDefault();
         $.ajax({
@@ -56,20 +60,24 @@ $(function () {
         });
     });
 
+    function showAlert(type) {
+        var alertId = "voting-" + type + "-alert";
+        $('#' + alertId).show();
+    }
+
+    // trigger overlay for input of a new club that's not listed yet
     var clubSelect = $('#clubs');
     clubSelect.change(function(event) {
         var selectValue = clubSelect.val();
         if(selectValue == 'add_club') {
-            //var addClubOverlay = $('.overlay--add-club');
-            //addClubOverlay.show();
             var addClubInput = $('#add-club_input');
             addClubInput.trigger('addClub');
         }
     });
 
+    // re-render list of clubs in select dropdown after new club was added
+    clubSelect.on('newClubAdded', function() {
+        getClubList();
+    });
 
-    function showAlert(type) {
-        var alertId = "voting-" + type + "-alert";
-        $('#' + alertId).show();
-    }
 });

@@ -12,7 +12,6 @@ $(function() {
     });
 
     $(document).keyup(function(event) {
-
         var ESC_KEY_CODE = 27;          // works for Google Chrome, keycode is Browser specific :x
         if (event.keyCode == ESC_KEY_CODE) {
             addClubOverlay.hide();
@@ -21,5 +20,24 @@ $(function() {
 
     $('.fa').click(function(event) {
         addClubOverlay.hide();
-    })
+    });
+
+    var form = $('#add-club_form');
+    form.submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            method: 'POST',
+            url: 'addNewClub.php',
+            data: form.serialize(),
+            success: function (data) {
+                addClubOverlay.hide();
+                $('#clubs').trigger('newClubAdded');
+            },
+            error: function (jqXHR, textStatus, error) {
+                console.log(error);
+                alert("fail")
+                // ...
+            }
+        });
+    });
 });
