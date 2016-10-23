@@ -20,6 +20,7 @@ gulp.task('copy-vendor-js', function () {
     return gulp.src([
         './node_modules/jquery/dist/jquery.js',
         './node_modules/handlebars/dist/handlebars.js',
+        './node_modules/bootstrap/dist/js/bootstrap.js',
         highchartsPath + 'highcharts.js',
         highchartsPath + 'modules/exporting.js'
     ])

@@ -56,11 +56,17 @@ $(function () {
         });
     });
 
-    var selectField = $('#add_club');
-    console.log(selectField);
-    selectField.click(function(event) {
-        alert("add a new club!");
+    var clubSelect = $('#clubs');
+    clubSelect.change(function(event) {
+        var selectValue = clubSelect.val();
+        if(selectValue == 'add_club') {
+            //var addClubOverlay = $('.overlay--add-club');
+            //addClubOverlay.show();
+            var addClubInput = $('#add-club_input');
+            addClubInput.trigger('addClub');
+        }
     });
+
 
     function showAlert(type) {
         var alertId = "voting-" + type + "-alert";
