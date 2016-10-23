@@ -56,6 +56,12 @@ $(function () {
         });
     });
 
+    var selectField = $('#add_club');
+    console.log(selectField);
+    selectField.click(function(event) {
+        alert("add a new club!");
+    });
+
     function showAlert(type) {
         var alertId = "voting-" + type + "-alert";
         $('#' + alertId).show();
