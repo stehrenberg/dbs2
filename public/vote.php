@@ -17,7 +17,6 @@ $dbConn = $dbConnector->getConnection();
 
 if(!doesUserExist($userEmail, $dbConn)) {
     $userId = createUser($userName, $userEmail, $dbConn);
-    var_dump($userId);
     
     if(!hasUserVotedYet($userId, $dbConn)) {
         countVote($userId, $votedClubId, $dbConn);

@@ -32,6 +32,7 @@ $(function() {
             success: function (data) {
                 addClubOverlay.hide();
                 $('#clubs').trigger('newClubAdded');
+                $('#voting-info-alert').show();
             },
             error: function (jqXHR, textStatus, error) {
                 console.log(error);
