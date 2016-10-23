@@ -15,9 +15,13 @@ gulp.task('copy-vendor-css', function () {
 });
 
 gulp.task('copy-vendor-js', function () {
+
+    var highchartsPath = './node_modules/highcharts/';
     return gulp.src([
         './node_modules/jquery/dist/jquery.js',
-        './node_modules/handlebars/dist/handlebars.js'
+        './node_modules/handlebars/dist/handlebars.js',
+        highchartsPath + 'highcharts.js',
+        highchartsPath + 'modules/exporting.js'
     ])
         .pipe(gulp.dest(assetsPath + 'js/vendor'));
 });

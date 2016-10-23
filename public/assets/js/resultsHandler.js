@@ -29,8 +29,19 @@ $(function () {
             });
             context.voteResults.forEach(function(row, i) {
                 row.rank = ++i;
-                row.votesPercent = 100 * row.voteCount / totalVotes|| 0;
+                row.votesPercent = (100 * row.voteCount / totalVotes).toPrecision(3) || 0;
             });
+
+            pieResults = data.map(function(voteResult) {
+                return {
+                    name: voteResult.name,
+                    y: parseInt(voteResult.votesPercent)
+                };
+            });
+
+            var piechart = $('#piechart-container').highcharts();
+            piechart.series[0].setData(pieResults);
+
             compileTemplate(context);
         },
         error: function (jqXHR, textStatus, error) {
