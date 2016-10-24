@@ -6,44 +6,32 @@ $(document).ready(function () {
     var templateScript = $("#select_news_cat-template").html();
     var template = Handlebars.compile(templateScript);
     var context = {
-        newsCategories: [
-            {
-                categoryId: "0",
-                name: "Test",
-            },
-            {
-                categoryId: "1",
-                name: "Test2",
-            }]
+        newsCategories: []
     };
 
-    //FIXME Wenn Ajax-Call drin muss der Ablauf wieder geändert werden!
-    //compileTemplate(context);
-    //getNewsCatList();
-
-    var theCompiledHtml = template(context);
-    var newsCategories = $('#news-categories');
-    newsCategories.html(theCompiledHtml);
-    newsCategories.multiselect();
+    compileTemplate(context);
+    getNewsCatList();
 
     function getNewsCatList() {
         $.ajax({
             method: 'GET',
-            url: 'listclubs.php',
+            url: 'newsletterCategories.php',
             dataType: 'json',
             success: function (data) {
                 context.newsCategories = data;
                 compileTemplate(context);
+                $('#news-categories').multiselect();
             },
             error: function (jqXHR, textStatus, error) {
                 console.log(error);
+                newsCategories.multiselect();
             }
         });
     }
 
     function compileTemplate(context) {
-        // Pass our data to the template
-        console.log(context);
-
+        var theCompiledHtml = template(context);
+        var newsCategories = $('#news-categories');
+        newsCategories.html(theCompiledHtml);
     }
 });
