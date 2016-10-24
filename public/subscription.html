@@ -9,18 +9,21 @@
     <!-- Bootstrap -->
     <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
     <link href="assets/css/vendor/bootstrap-theme.css" rel="stylesheet">
+    <link href="assets/css/vendor/bootstrap-multiselect.css" rel="stylesheet">
 
     <link href="assets/css/app.css" rel="stylesheet">
 
     <script type="text/javascript" src="assets/js/vendor/handlebars.js"></script>
     <script type="text/javascript" src="assets/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="assets/js/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/bootstrap-multiselect-collapsible-groups.js"></script>
+
 
     <script type="text/javascript" src="assets/js/app.js"></script>
-    <script type="text/javascript" src="assets/js/formHandler.js"></script>
+    <script type="text/javascript" src="assets/js/multiselectHandler.js"></script>
     <script type="text/javascript" src="assets/js/navHandler.js"></script>
     <script type="text/javascript" src="assets/js/alertBoxHandler.js"></script>
-    <script type="text/javascript" src="assets/js/addNewClub.js"></script>
 
     <title>Subscribe to our Newsletter</title>
 </head>
@@ -37,23 +40,24 @@
 <h1>Melde dich hier für unseren Newsletter an</h1>
 <div class="container" role="main">
     <div class="input-group">
+        <!-- FIXME form id ändern! -->
         <form id="vote_form" action="" method="POST">
             <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
             <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
             <div>
-            <label for="clubs">Welche News interessieren dich?</label>
-            <select name="clubs" id="clubs" multiple="multiple">
-                <script id="select_clubs-template" type="text/x-handlebars-template">
-                    {{#each clubs}}
-                    <option value="{{club_id}}">{{name}}</option>
-                    {{/each}}
-                </script>
-            </select>
-            <span class="input-group-addon">
+                <label for="news-categories">Welche News interessieren dich?</label>
+                <select name="news" id="news-categories" multiple="multiple">
+                    <script id="select_news_cat-template" type="text/x-handlebars-template">
+                        {{#each newsCategories}}
+                        <option value="{{categoryId}}">{{name}}</option>
+                        {{/each}}
+                    </script>
+                </select>
+                <span class="input-group-addon">
                 <label for="is-club-member__checkbox">Mitglied in einem Fußballclub?</label>
                 <input type="checkbox" name="is-club-member" id="is-club-member__checkbox">
              </span>
-            <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
+                <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
         </form>
     </div>
 </div>
