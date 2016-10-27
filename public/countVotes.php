@@ -10,7 +10,7 @@ require_once __DIR__ . '/../backend/DatabaseConnector.php';
 
 $dbConnector = new DatabaseConnector();
 $dbConn = $dbConnector->getConnection();
-$queryResult = $dbConn->query("SELECT COUNT('user_id') FROM votes")->fetch(PDO::FETCH_NUM);
+$queryResult = $dbConn->query("SELECT COUNT('user_id') FROM Votes")->fetch(PDO::FETCH_NUM);
 $json = json_encode($queryResult[0]);
 header("Content-Type: application/json");
 echo $json;
