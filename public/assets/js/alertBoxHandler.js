@@ -3,11 +3,8 @@
  */
 $(function () {
 
-    // Grab the template script
     var templateScript = $("#voting-success-alert-template").html();
-    // Compile the template
     var template = Handlebars.compile(templateScript);
-    // Define our data object
     var context = {
         voteCount: 0
     };
