@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "node_modules/gulp/bin/gulp.js"
+    "gulp": "node_modules/gulp/bin/gulp.js",
+	"gulp-betina": "C:\\Users\\Betina\\Documents\\HM\\Vorlesungen\\Semester9\\DBS2\\Projekt\\node-v6.7.0-win-x86\\gulp.cmd"
   },
   "repository": {
     "type": "git",
