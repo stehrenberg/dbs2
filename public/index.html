@@ -30,6 +30,7 @@
     <ul class="nav navbar-nav">
         <li id="vote_tab" class="active" role="presentation"><a href="#">Abstimmung</a></li>
         <li id="results_tab" role="presentation"><a href="results.html">Ergebnis</a></li>
+        <li id="newsletter-subscription_tab" role="presentation"><a href="subscription.html">Newsletter</a></li>
     </ul>
 </div>
 
@@ -61,7 +62,12 @@
         </p>
     </script>
 </div>
-<div id="voting-fail-alert" class="alert alert-danger" role="alert"><p>Ups - da ist was schiefgelaufen ^_^°</p></div>
+<div id="voting-fail-alert" class="alert alert-danger" role="alert">
+    <p>Ups - da ist was schiefgelaufen ^_^°</p>
+</div>
+<div id="voting-info-alert" class="alert alert-info" role="alert">
+        <p>Dein Fußballclub wurde erfolgreich hinzugefügt.</p>
+</div>
 
 
 <div class="overlay--add-club">
@@ -69,7 +75,8 @@
         <div class="overlay--add-club__form--inner__close"><span class="fa fa-close">x</span></div>
         <div class="overlay--add-club__form--inner">
             <form id="add-club_form" action="" method="POST">
-                <input name="new-club" id="add-club_input" class="center-block" type="text" placeholder="" autocomplete="off">
+                <input name="new-club" id="add-club_input" class="center-block" type="text" placeholder=""
+                       autocomplete="off">
             </form>
         </div>
     </div>
