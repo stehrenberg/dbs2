@@ -10,8 +10,7 @@ require_once __DIR__ . '/../backend/DatabaseConnector.php';
 
 $dbConnector = new DatabaseConnector();
 $dbConn = $dbConnector->getConnection();
-//FIXME Query korrigieren, ist jetzt erstmal zu Testzwecken so :)
-$queryResult = $dbConn->query("SELECT club_id AS categoryId, name FROM Clubs")->fetchAll(PDO::FETCH_ASSOC);
+$queryResult = $dbConn->query("SELECT * FROM Newsletter")->fetchAll(PDO::FETCH_ASSOC);
 $json = json_encode($queryResult);
 header("Content-Type: application/json");
 echo $json;
