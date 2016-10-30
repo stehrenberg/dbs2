@@ -24,7 +24,7 @@
     <script type="text/javascript" src="assets/js/navHandler.js"></script>
     <script type="text/javascript" src="assets/js/alertBoxHandler.js"></script>
 
-    <title>Subscribe to our Newsletter</title>
+    <title>Send Newsletters</title>
 </head>
 <body>
 
@@ -32,24 +32,23 @@
     <ul class="nav navbar-nav">
         <li id="vote_tab" role="presentation"><a href="index.html">Abstimmung</a></li>
         <li id="results_tab" role="presentation"><a href="results.html">Ergebnis</a></li>
-        <li id="newsletter-subscription_tab" class="active" role="presentation"><a href="#">Newsletter</a></li>
-        <li id="send-newsletter_tab" role="presentation"><a href="send_newsletter.html">Newsletterversand</a></li>
+        <li id="newsletter-subscription_tab" role="presentation"><a href="subscription.html">Newsletter</a></li>
+        <li id="send-newsletter_tab" class="active" role="presentation"><a href="#">Newsletterversand</a></li>
     </ul>
 </div>
 
-<h1>Melde dich hier für unseren Newsletter an</h1>
+<h1>Newsletter verschicken</h1>
 <div class="container" role="main">
     <div class="input-group">
-        <!-- FIXME form id ändern! -->
-        <form id="vote_form" action="" method="POST">
-            <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
-            <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
+        <form id="send-newsletter_form" action="" method="POST">
+           <!-- <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
+            <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>-->
             <div>
-                <label for="news-categories">Welche News interessieren dich?</label>
+                <label for="news-categories">Für welche Kategorien?</label>
                 <select name="news" id="news-categories" multiple="multiple">
                     <script id="select_news_cat-template" type="text/x-handlebars-template">
                         {{#each newsCategories}}
-                        <option value="{{categoryId}}">{{name}}</option>
+                        <option value="{{category_id}}">{{name}}</option>
                         {{/each}}
                     </script>
                 </select>
