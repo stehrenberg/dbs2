@@ -26,15 +26,30 @@
 </head>
 <body>
 
-<div class="navbar-collapse collapse" role="navigation">
-    <ul class="nav navbar-nav">
-        <li id="vote_tab" class="active" role="presentation"><a href="#">Abstimmung</a></li>
-        <li id="results_tab" role="presentation"><a href="results.html">Ergebnis</a></li>
-        <li id="newsletter-subscription_tab" role="presentation"><a href="subscription.html">Newsletter</a></li>
-    </ul>
-</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
 
-<h1>Welches ist dein Lieblings-Fußballclub?</h1>
+        <div id="nav" class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li id="vote_tab" class="active" role="presentation"><a href="#">Abstimmung</a></li>
+                <li id="results_tab" class="hidden" role="presentation"><a href="results.html">Ergebnis</a></li>
+                <li id="newsletter-subscription_tab" role="presentation"><a href="subscription.html">Newsletter</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1>Welcher ist dein Lieblings-Fußballclub?</h1>
 <div class="container" role="main">
     <div class="input-group">
         <form id="vote_form" action="" method="POST">
@@ -43,7 +58,7 @@
             <select name="clubs" id="clubs" required>
                 <script id="select_clubs-template" type="text/x-handlebars-template">
                     {{#each clubs}}
-                    <option value="{{club_id}}">{{name}}</option>
+                        <option value="{{club_id}}">{{name}}</option>
                     {{/each}}
                     <option value="separator" disabled="disabled">─────────────────</option>
                     <option id="add_club-option" value="add_club">Einen neuen Club hinzufügen...</option>
@@ -54,7 +69,7 @@
     </div>
 </div>
 
-<div id="voting-success-alert" class="alert alert-success" role="alert">
+<div id="voting-success-alert" class="alert alert-success hidden" role="alert">
     <script id="voting-success-alert-template" type="text/x-handlebars-template">
         <p>
             Yay! Voting erfolgreich :)<br/>
@@ -62,17 +77,17 @@
         </p>
     </script>
 </div>
-<div id="voting-fail-alert" class="alert alert-danger" role="alert">
+<div id="voting-fail-alert" class="alert alert-danger hidden" role="alert">
     <p>Ups - da ist was schiefgelaufen ^_^°</p>
 </div>
-<div id="voting-info-alert" class="alert alert-info" role="alert">
-        <p>Dein Fußballclub wurde erfolgreich hinzugefügt.</p>
+<div id="voting-info-alert" class="alert alert-info hidden" role="alert">
+    <p>Dein Fußballclub wurde erfolgreich hinzugefügt.</p>
 </div>
 
 
-<div class="overlay--add-club">
+<div id="overlay--add-club" class="overlay--add-club hidden">
     <div class="overlay--add-club__form" style="display: block;">
-        <div class="overlay--add-club__form--inner__close"><span class="fa fa-close">x</span></div>
+        <div class="overlay--add-club__form--inner__close"><span id="#closing_x">x</span></div>
         <div class="overlay--add-club__form--inner">
             <form id="add-club_form" action="" method="POST">
                 <input name="new-club" id="add-club_input" class="center-block" type="text" placeholder=""

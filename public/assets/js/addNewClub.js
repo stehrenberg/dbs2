@@ -4,9 +4,10 @@
 $(function() {
 
     var addClubInput = $('#add-club_input');
-    var addClubOverlay = $('.overlay--add-club');
+    var addClubOverlay = $('#overlay--add-club');
 
     addClubInput.on('addClub', function(){
+        console.log(addClubOverlay);
         addClubOverlay.show();
         addClubInput.focus();
     });
@@ -18,7 +19,7 @@ $(function() {
         }
     });
 
-    $('.fa').click(function(event) {
+    $('#closing_x').click(function(event) {
         addClubOverlay.hide();
     });
 
