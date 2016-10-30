@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 16. Okt 2016 um 04:23
--- Server-Version: 10.1.16-MariaDB
--- PHP-Version: 5.6.24
+-- Erstellungszeit: 29. Okt 2016 um 22:35
+-- Server-Version: 10.1.10-MariaDB
+-- PHP-Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,10 +34,6 @@ CREATE TABLE `Clubs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONEN DER TABELLE `Clubs`:
---
-
---
 -- Daten für Tabelle `Clubs`
 --
 
@@ -53,18 +49,50 @@ INSERT INTO `Clubs` (`club_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `Newsletter`
+--
+
+CREATE TABLE `Newsletter` (
+  `newsletter_id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `Newsletter`
+--
+
+INSERT INTO `Newsletter` (`newsletter_id`, `name`) VALUES
+(1, '1.Liga'),
+(2, '2.Liga'),
+(3, '3.Liga'),
+(6, 'Deutsche Nationalmannschaft'),
+(4, 'Regionalliga Bayern'),
+(5, 'WM 2018');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `Newsletter_votes`
+--
+
+CREATE TABLE `Newsletter_votes` (
+  `user_id` int(11) NOT NULL,
+  `newsletter_id` int(11) NOT NULL,
+  `vote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `User`
 --
 
 CREATE TABLE `User` (
   `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `email` varchar(20) NOT NULL
+  `email` varchar(20) NOT NULL,
+  `is_member` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONEN DER TABELLE `User`:
---
 
 -- --------------------------------------------------------
 
@@ -75,16 +103,8 @@ CREATE TABLE `User` (
 CREATE TABLE `Votes` (
   `club_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `vote_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `vote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONEN DER TABELLE `Votes`:
---   `club_id`
---       `Clubs` -> `club_id`
---   `user_id`
---       `User` -> `user_id`
---
 
 --
 -- Indizes der exportierten Tabellen
@@ -98,20 +118,37 @@ ALTER TABLE `Clubs`
   ADD KEY `clubname` (`name`);
 
 --
+-- Indizes für die Tabelle `Newsletter`
+--
+ALTER TABLE `Newsletter`
+  ADD PRIMARY KEY (`newsletter_id`),
+  ADD KEY `name` (`name`);
+
+--
+-- Indizes für die Tabelle `Newsletter_votes`
+--
+ALTER TABLE `Newsletter_votes`
+  ADD PRIMARY KEY (`user_id`,`newsletter_id`),
+  ADD KEY `vote_date` (`vote_date`),
+  ADD KEY `newsletter_id` (`newsletter_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indizes für die Tabelle `User`
 --
 ALTER TABLE `User`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `user_email` (`email`),
-  ADD KEY `username` (`name`);
+  ADD KEY `username` (`name`),
+  ADD KEY `is_member` (`is_member`);
 
 --
 -- Indizes für die Tabelle `Votes`
 --
 ALTER TABLE `Votes`
-  ADD PRIMARY KEY (`club_id`,`user_id`),
+  ADD PRIMARY KEY (`user_id`) USING BTREE,
   ADD KEY `vote_date` (`vote_date`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `club_id` (`club_id`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -123,6 +160,11 @@ ALTER TABLE `Votes`
 ALTER TABLE `Clubs`
   MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT für Tabelle `Newsletter`
+--
+ALTER TABLE `Newsletter`
+  MODIFY `newsletter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT für Tabelle `User`
 --
 ALTER TABLE `User`
@@ -130,6 +172,13 @@ ALTER TABLE `User`
 --
 -- Constraints der exportierten Tabellen
 --
+
+--
+-- Constraints der Tabelle `Newsletter_votes`
+--
+ALTER TABLE `Newsletter_votes`
+  ADD CONSTRAINT `newsletter_id` FOREIGN KEY (`newsletter_id`) REFERENCES `Newsletter` (`newsletter_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_id_newsletter` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
 
 --
 -- Constraints der Tabelle `Votes`
