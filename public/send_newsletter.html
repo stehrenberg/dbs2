@@ -42,9 +42,11 @@
     <div class="input-group">
         <form id="send-newsletter_form" action="" method="POST">
            <!-- <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
-            <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>-->
+            -->
             <div>
-                <label for="news-categories">Für welche Kategorien?</label>
+                <input name="mail-subject" type="text" placeholder="Betreff" class="form-control" required>
+                <textarea name="mailtext" id="newsletter-mailtext" class="textfield" placeholder="Emailtext" rows="3" required></textarea>
+                <label for="news-categories">Für welche Kategorien versenden?</label>
                 <select name="news" id="news-categories" multiple="multiple">
                     <script id="select_news_cat-template" type="text/x-handlebars-template">
                         {{#each newsCategories}}
@@ -53,10 +55,10 @@
                     </script>
                 </select>
                 <span class="input-group-addon">
-                <label for="is-club-member__checkbox">Mitglied in einem Fußballclub?</label>
-                <input type="checkbox" name="is-club-member" id="is-club-member__checkbox">
+                <label for="for-club-member__checkbox">Nur an Mitglieder versenden?</label>
+                <input type="checkbox" name="for-club-member" id="for-club-member__checkbox">
              </span>
-                <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
+                <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Jetzt versenden</button>
         </form>
     </div>
 </div>

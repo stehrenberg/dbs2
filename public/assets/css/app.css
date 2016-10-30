@@ -37,6 +37,10 @@
     cursor: crosshair;
 }
 
+.textfield {
+    width: 100%
+}
+
 #add-club_input {
     border: none;
     font-family: 'Oswald',serif;
