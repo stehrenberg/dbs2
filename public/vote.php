@@ -36,7 +36,7 @@ function findUserByEmail($email, $dbConn) {
 }
 
 function createUser($name, $email, $dbConn) {
-    $stmt = $dbConn->prepare('INSERT INTO User VALUES(NULL, :name, :email)');
+    $stmt = $dbConn->prepare('INSERT INTO User VALUES(NULL, :name, :email, FALSE)');
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
     $stmt->execute();

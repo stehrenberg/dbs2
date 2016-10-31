@@ -40,15 +40,14 @@
 <div class="container" role="main">
     <div class="input-group">
         <!-- FIXME form id ändern! -->
-        <form id="vote_form" action="" method="POST">
+        <form id="subscription_form" action="" method="POST">
             <input name="name" type="text" placeholder="Dein Name" class="form-control" required>
             <input name="email" type="email" placeholder="Deine Mailadresse" class="form-control" required>
-            <div>
                 <label for="news-categories">Welche News interessieren dich?</label>
-                <select name="news" id="news-categories" multiple="multiple">
+                <select name="news[]" id="news-categories" multiple="multiple">
                     <script id="select_news_cat-template" type="text/x-handlebars-template">
                         {{#each newsCategories}}
-                        <option value="{{categoryId}}">{{name}}</option>
+                        <option value="{{newsletter_id}}">{{name}}</option>
                         {{/each}}
                     </script>
                 </select>
@@ -56,9 +55,17 @@
                 <label for="is-club-member__checkbox">Mitglied in einem Fußballclub?</label>
                 <input type="checkbox" name="is-club-member" id="is-club-member__checkbox">
              </span>
-                <button id="vote_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
+                <button id="subscription_btn" type="submit" class="btn btn-xs btn-primary">Anmelden</button>
         </form>
     </div>
+</div>
+<div id="voting-success-alert" class="alert alert-success" role="alert">
+    <script id="voting-success-alert-template" type="text/x-handlebars-template">
+        <p>
+            Yay! Abonnement abgeschlossen :)<br/>
+            Vielen Dank fürs Eintragen!
+        </p>
+    </script>
 </div>
 
 </body>
