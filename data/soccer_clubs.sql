@@ -72,13 +72,12 @@ INSERT INTO `Newsletter` (`newsletter_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `Newsletter_votes`
+-- Tabellenstruktur für Tabelle `Newsletter_Abos`
 --
 
-CREATE TABLE `Newsletter_votes` (
+CREATE TABLE `Newsletter_Abos` (
   `user_id` int(11) NOT NULL,
-  `newsletter_id` int(11) NOT NULL,
-  `vote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `newsletter_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,8 +101,7 @@ CREATE TABLE `User` (
 
 CREATE TABLE `Votes` (
   `club_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `vote_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -125,11 +123,10 @@ ALTER TABLE `Newsletter`
   ADD KEY `name` (`name`);
 
 --
--- Indizes für die Tabelle `Newsletter_votes`
+-- Indizes für die Tabelle `Newsletter_Abos`
 --
-ALTER TABLE `Newsletter_votes`
+ALTER TABLE `Newsletter_Abos`
   ADD PRIMARY KEY (`user_id`,`newsletter_id`),
-  ADD KEY `vote_date` (`vote_date`),
   ADD KEY `newsletter_id` (`newsletter_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -147,7 +144,6 @@ ALTER TABLE `User`
 --
 ALTER TABLE `Votes`
   ADD PRIMARY KEY (`user_id`) USING BTREE,
-  ADD KEY `vote_date` (`vote_date`),
   ADD KEY `club_id` (`club_id`);
 
 --
@@ -174,9 +170,9 @@ ALTER TABLE `User`
 --
 
 --
--- Constraints der Tabelle `Newsletter_votes`
+-- Constraints der Tabelle `Newsletter_Abos`
 --
-ALTER TABLE `Newsletter_votes`
+ALTER TABLE `Newsletter_Abos`
   ADD CONSTRAINT `newsletter_id` FOREIGN KEY (`newsletter_id`) REFERENCES `Newsletter` (`newsletter_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_id_newsletter` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
 
