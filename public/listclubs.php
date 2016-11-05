@@ -1,9 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Steff
- * Date: 17/10/16
- */
 
 require_once __DIR__ . '/../backend/DatabaseConnector.php';
 
