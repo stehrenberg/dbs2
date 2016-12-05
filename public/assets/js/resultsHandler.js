@@ -20,16 +20,9 @@ $(function () {
         dataType: 'json',
         success: function (data) {
             context.voteResults = data;
-            var totalVotes = context.voteResults.map(function(voteResult) {
-                return voteResult.voteCount;
-            }).reduce(function(previous, next) {
-                var a = parseInt(previous) || 0;
-                var b = parseInt(next);
-                return a + b;
-            });
             context.voteResults.forEach(function(row, i) {
                 row.rank = ++i;
-                row.votesPercent = (100 * row.voteCount / totalVotes).toPrecision(3) || 0;
+                row.votesPercent = (row.votesPercent * 100.0).toPrecision(3);
             });
 
             pieResults = data.map(function(voteResult) {
