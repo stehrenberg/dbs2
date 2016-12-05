@@ -8,7 +8,7 @@
 
 require_once __DIR__ . '/../backend/DatabaseConnector.php';
 
-$queryString = 'SELECT 0 AS rank, Clubs.name, COUNT(user_id) AS voteCount, 0 as votesPercent FROM Votes, Clubs WHERE Votes.club_id = Clubs.club_id GROUP BY Votes.club_id ORDER BY voteCount DESC';
+$queryString = 'SELECT 0 AS rank, Clubs.name AS name, (COUNT(user_id)/(SELECT COUNT(*) FROM Votes)) AS votesPercent, COUNT(user_id) AS voteCount FROM Votes, Clubs WHERE Votes.club_id = Clubs.club_id GROUP BY Votes.club_id ORDER BY voteCount DESC;';
 
 $dbConnector = new DatabaseConnector();
 $dbConn = $dbConnector->getConnection();
